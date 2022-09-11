@@ -318,6 +318,20 @@ return [
             'label'       => 'medicos',
             'label_color' => 'warning',
         ],
+        [
+            'text'        => 'Enfermeros',
+            'url'         => 'enfermeros',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'Enfermeros',
+            'label_color' => 'secondary',
+        ],
+        [
+            'text'        => 'Pacientes',
+            'url'         => 'pacientes',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'Pacientes',
+            'label_color' => 'primary',
+        ],
         ['header' => 'Opciones'],
         [
             'text' => 'Perfil de Usuario',
