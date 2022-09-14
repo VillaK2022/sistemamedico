@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('apellidop_paciente',50);
             $table->string('apellidom_paciente',50);
             $table->string('nombre_paciente',50);
-            $table->timestamps('fechanac_paciente');
+            $table->date('fechanac_paciente');
             $table->string('ecivil_paciente',50);
             $table->string('tlf_paciente');
             $table->string('ocupacion_paciente',50);

@@ -42,22 +42,22 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Cedula</label>
-        <input type="number" id="cedula_paciente" name="cedula_paciente" required class="form-control" tabindex="1">
+        <input type="number" id="cedula_paciente" name="cedula_paciente" class="form-control" tabindex="1">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Telefono</label>
-        <input type="number" id="tlf_paciente" name="tlf_paciente" required class="form-control" tabindex="1">
+        <input type="number" id="tlf_paciente" name="tlf_paciente" class="form-control" tabindex="1">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Ocupacion</label>
-        <input type="text" id="ocupacion_paciente" name="ocupacion_paciente" required class="form-control" tabindex="1">
+        <input type="text" id="ocupacion_paciente" name="ocupacion_paciente" class="form-control" tabindex="1">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Lugar donde vive</label>
-        <input type="text" id="resid_paciente" name="resid_paciente" required class="form-control" tabindex="1">
+        <input type="text" id="resid_paciente" name="resid_paciente" class="form-control" tabindex="1">
     </div>
 
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>

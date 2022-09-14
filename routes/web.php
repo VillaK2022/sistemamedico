@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::resource('medicos','App\Http\Controllers\MedicoController');
 Route::resource('pacientes','App\Http\Controllers\PacienteController');
 Route::resource('enfermeros','App\Http\Controllers\EnfermeroController');
+Route::resource('citas','App\Http\Controllers\CitaController');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
