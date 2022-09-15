@@ -13,7 +13,7 @@
     
     <div class="mb-3">
         <label for="" class="form-label">Apellido paterno</label>
-        <input type="text" id="apellidop_paciente" name="apellidop_paciente" class="form-control" value="{{ $paciente->cedula_paciente }}">
+        <input type="text" id="apellidop_paciente" name="apellidop_paciente" class="form-control" value="{{ $paciente->apellidop_paciente }}">
     </div>
 
     <div class="mb-3">

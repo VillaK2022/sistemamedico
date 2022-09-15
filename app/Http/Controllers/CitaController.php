@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cita;
+use App\Models\Paciente;
 
 class CitaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,8 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $citas = Cita::all();
+        return view('cita.index')->with('citas',$citas);
     }
 
     /**
@@ -23,8 +29,11 @@ class CitaController extends Controller
      */
     public function create()
     {
-        //
+        $pacientes = Paciente::all();
+        $citas = Cita::all();
+        return view('cita.create')->with('pacientes',$pacientes,);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +43,16 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $citas = new Cita();
+
+        $citas->razon_cita = $request->get('razon_cita');
+        $citas->fecha_cita = $request->get('fecha_cita');
+        $citas->id_paciente = $request->get('id_paciente');
+        $citas->id_medico = $request->get('id_medico');
+
+        $citas->save();
+
+        return  redirect('/citas');
     }
 
     /**
@@ -56,7 +74,8 @@ class CitaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cita = Cita::find($id);
+        return view('cita.edit')->with('cita', $cita);
     }
 
     /**
@@ -68,7 +87,16 @@ class CitaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cita =  Cita::find($id);
+
+        $cita->razon_cita = $request->get('razon_cita');
+        $cita->fecha_cita = $request->get('fecha_cita');
+        $cita->id_paciente = $request->get('id_paciente');
+        $cita->id_medico = $request->get('id_medico');
+
+        $cita->save();
+
+        return  redirect('/citas'); 
     }
 
     /**

@@ -1,43 +1,34 @@
 @extends('adminlte::page')
 
-@section('title', 'Pacientes')
+@section('title', 'Citas')
 
 @section('content_header')
-    <h1>Pacientes</h1>
+    <h1>Citas</h1>
 @stop
 
 @section('content')
-    <a href="pacientes/create" class="btn btn-primary mb-3">CREAR</a>
-        <table id="pacientes" class="table table-hover shadow-lg mt-4" style="width:100%">
+    <a href="citas/create" class="btn btn-primary mb-3">CREAR CITA</a>
+        <table id="citas" class="table table-hover shadow-lg mt-4" style="width:100%">
             <thead class="bg-primary text-white">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Apellido paterno</th>
-                    <th scope="col">Apellido Materno</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Fecha nacimiento</th>
-                    <th scope="col">Estado civil</th>
-                    <th scope="col">Ocupacion</th>
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Medico</th>
+                    <th scope="col">Fecha de la cita</th>
+                    <th scope="col">Motivo</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ( $pacientes as $paciente)
+                @foreach ( $citas as $cita)
                     <tr>
-                        <td>{{ $paciente->id }}</td>
-                        <td>{{ $paciente->apellidop_paciente }}</td>
-                        <td>{{ $paciente->apellidom_paciente }}</td>
-                        <td>{{ $paciente->nombre_paciente }}</td>
-                        <td>{{ $paciente->fechanac_paciente }}</td>
-                        <td>{{ $paciente->ecivil_paciente }}</td>
-                        <td>{{ $paciente->ocupacion_paciente }}</td>
-                        <td>{{ $paciente->cedula_paciente }}</td>
-                        <td>{{ $paciente->tlf_paciente }}</td>
+                        <td>{{ $cita->id }}</td>
+                        <td>{{ $cita->id_paciente }}</td>
+                        <td>{{ $cita->id_medico }}</td>
+                        <td>{{ $cita->fecha_cita }}</td>
+                        <td>{{ $cita->razon_cita }}</td>
                         <td>
-                            <form action="{{ route ('pacientes.destroy', $paciente->id) }}" method="POST">
-                                <a href="/pacientes/{{ $paciente->id }}/edit" class="btn btn-info">Editar</a>
+                            <form action="{{ route ('citas.destroy', $cita->id) }}" method="POST">
+                                <a href="/citas/{{ $cita->id }}/edit" class="btn btn-info">Editar</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Borrar</button>
