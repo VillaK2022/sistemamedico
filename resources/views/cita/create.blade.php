@@ -23,23 +23,20 @@
     <label for="" class="form-label">Paciente</label>
         <select id="id_paciente" name="id_paciente" required class="form-control" class="mb-3">
             @foreach ( $pacientes as $paciente)
-            <option value="{{ $paciente->id }}">{{ $paciente->nombre_paciente }}</option>
+                <option value="{{ $paciente->id }}">{{ $paciente->nombre_paciente }}</option>
             @endforeach
             
         </select>
     </div>
+   
     <div class="mb-3">
-        <label for="" class="form-label">medico</label>
-        <input type="number" id="id_medico" name="id_medico" class="form-control" tabindex="1">
-    </div>
-    {{-- <div class="mb-3">
         <label for="" class="form-label">Medico</label>
             <select id="id_medico" name="id_medico" required class="form-control" class="mb-3">
-                @foreach ( $citas as $cita)
-            <option value="{{ $cita->id_medico }}">{{ $cita->id_medico }}</option>
-            @endforeach
+                @foreach ( $medicos as $medico)
+                    <option value="{{ $medico->id }}">{{ $medico->nombre_medico }}</option>
+                @endforeach
             </select>
-    </div> --}}
+    </div>
 
     
 
