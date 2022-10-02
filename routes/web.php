@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsultaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::resource('medicos','App\Http\Controllers\MedicoController');
 Route::resource('pacientes','App\Http\Controllers\PacienteController');
 Route::resource('enfermeros','App\Http\Controllers\EnfermeroController');
 Route::resource('citas','App\Http\Controllers\CitaController');
+Route::resource('examenfisico','App\Http\Controllers\ExamenFisicoController');
+Route::resource('consulta','App\Http\Controllers\ConsultaController');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

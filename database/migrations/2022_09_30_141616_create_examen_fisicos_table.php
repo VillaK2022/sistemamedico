@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('citas', function (Blueprint $table) {
-            $table->id('id_cita');
-            $table->integer('id_paciente');
-            $table->integer('id_medico');
-            $table->date('fecha_cita');
-            $table->string('razon_cita',50);
+        Schema::create('examen_fisicos', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('citas');
+        Schema::dropIfExists('examen_fisicos');
     }
 };
