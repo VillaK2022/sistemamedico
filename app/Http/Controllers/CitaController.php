@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cita;
 use App\Models\Paciente;
-
+use App\Models\Medico;
 class CitaController extends Controller
 {
     public function __construct(){
@@ -18,8 +18,10 @@ class CitaController extends Controller
      */
     public function index()
     {
+        $pacientes = Paciente::all();
+        $medicos = Medico::all();
         $citas = Cita::all();
-        return view('cita.index')->with('citas',$citas);
+        return view('cita.index')->with('pacientes',$pacientes)->with('medicos',$medicos)->with('citas',$citas);
     }
 
     /**
@@ -30,8 +32,12 @@ class CitaController extends Controller
     public function create()
     {
         $pacientes = Paciente::all();
+        $medicos = Medico::all();
         $citas = Cita::all();
-        return view('cita.create')->with('pacientes',$pacientes,);
+        return view('cita.create')->with('pacientes',$pacientes)->with('medicos',$medicos)->with('citas',$citas);
+        
+       
+    
     }
 
 
