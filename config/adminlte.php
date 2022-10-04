@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'BIOIMAGEN C.A',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -304,7 +304,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
         ],
         [
             'text' => 'blog',
@@ -312,10 +312,10 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'medicos',
+            'text'        => 'Medicos',
             'url'         => 'medicos',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 'medicos',
+            // 'label'       => 'medicos',
             'label_color' => 'warning',
             'rol'         => [1],
         ],
@@ -323,7 +323,7 @@ return [
             'text'        => 'Enfermeros',
             'url'         => 'enfermeros',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 'Enfermeros',
+            // 'label'       => 'Enfermeros',
             'label_color' => 'secondary',
             'rol'         => [1,2,3],
         ],
@@ -331,7 +331,7 @@ return [
             'text'        => 'Pacientes',
             'url'         => 'pacientes',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 'Pacientes',
+            // 'label'       => 'Pacientes',
             'label_color' => 'primary',
             'rol'         => [1,2,3],
         ],
@@ -350,64 +350,64 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Cambiar Contraseña',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        // [
+        //     'text'    => 'multilevel',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'level_one',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'level_two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
+        // ['header' => 'labels'],
+        // [
+        //     'text'       => 'important',
+        //     'icon_color' => 'red',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*

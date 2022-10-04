@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsultaController;
 
@@ -22,8 +23,13 @@ Route::resource('medicos','App\Http\Controllers\MedicoController');
 Route::resource('pacientes','App\Http\Controllers\PacienteController');
 Route::resource('enfermeros','App\Http\Controllers\EnfermeroController');
 Route::resource('citas','App\Http\Controllers\CitaController');
+
 Route::get('inicio','App\Http\Controllers\PacienteController@index2');
 Route::get('buscar','App\Http\Controllers\PacienteController@buscarCedula');
+
+
+Route::resource('examenfisico','App\Http\Controllers\ExamenFisicoController');
+Route::resource('consulta','App\Http\Controllers\ConsultaController');
 
 Route::middleware([
     'auth:sanctum',

@@ -25,8 +25,13 @@ return new class extends Migration
             $table->date('fechareg_consulta');
             $table->timestamps();
             //LLAVES FORANEAS
+
             // $table->foreign('id_medico')->references('id')->on('medicos');
             // $table->foreign('id_paciente')->references('id')->on('pacientes');
+
+            $table->foreign('id_medico')->references('id')->on('medicos');
+            $table->foreign('id_paciente')->references('id')->on('pacientes');
+
         });
     }
 

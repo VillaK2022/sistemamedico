@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_cita');
             $table->integer('id_paciente');
             $table->integer('id_medico');
             $table->date('fecha_cita');
