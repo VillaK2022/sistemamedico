@@ -115,4 +115,18 @@ class PacienteController extends Controller
     {
         //
     }
+
+    public function index2()
+    {
+        return view('inicio.index');
+    }
+
+    public function buscarCedula (Request $request) {
+        $paciente = Paciente::whereRaw('cedula_paciente LIKE ?', ["%".$request->get('cedula_paciente')."%"])->first();
+        if ($paciente) {
+            return view('paciente.find')->with('paciente', $paciente);
+        }else{
+        return view('paciente.create')->with('paciente', $request->get('cedula_paciente'));
+        }
+    }
 }

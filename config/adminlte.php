@@ -317,6 +317,7 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'medicos',
             'label_color' => 'warning',
+            'rol'         => [1],
         ],
         [
             'text'        => 'Enfermeros',
@@ -324,6 +325,7 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'Enfermeros',
             'label_color' => 'secondary',
+            'rol'         => [1,2,3],
         ],
         [
             'text'        => 'Pacientes',
@@ -331,6 +333,15 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'Pacientes',
             'label_color' => 'primary',
+            'rol'         => [1,2,3],
+        ],
+        [
+            'text'        => 'medicos',
+            'url'         => 'medicos',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'medicos',
+            'label_color' => 'warning',
+            'rol'         => [1,2,3],
         ],
         ['header' => 'Opciones'],
         [
