@@ -2,7 +2,6 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ConsultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +25,7 @@ Route::resource('citas','App\Http\Controllers\CitaController');
 
 Route::get('inicio','App\Http\Controllers\PacienteController@index2');
 Route::get('buscar','App\Http\Controllers\PacienteController@buscarCedula');
+Route::get('inicio', 'App\Http\Controllers\InicioController@index');
 
 
 Route::resource('examenfisico','App\Http\Controllers\ExamenFisicoController');

@@ -312,86 +312,52 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Medicos',
-            'url'         => 'medicos',
-            'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 'medicos',
-            'label_color' => 'warning',
-            'rol'         => [1],
-        ],
-        [
-            'text'        => 'Enfermeros',
-            'url'         => 'enfermeros',
-            'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 'Enfermeros',
-            'label_color' => 'secondary',
+            'text'        => 'Inicio',
+            'url'         => 'inicio',
+            'icon'        => 'fa fa-home',
             'rol'         => [1,2,3],
         ],
-        [
-            'text'        => 'Pacientes',
-            'url'         => 'pacientes',
-            'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 'Pacientes',
-            'label_color' => 'primary',
-            'rol'         => [1,2,3],
-        ],
-        [
-            'text'        => 'medicos',
-            'url'         => 'medicos',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'medicos',
-            'label_color' => 'warning',
-            'rol'         => [1,2,3],
-        ],
-        ['header' => 'Opciones'],
-        [
-            'text' => 'Perfil de Usuario',
-            'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Cambiar Contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // ['header' => 'Opciones'],
         // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'level_one',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'level_two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //     ],
+        //     'text' => 'Perfil de Usuario',
+        //     'url'  => 'user/profile',
+        //     'icon' => 'fas fa-fw fa-user',
         // ],
+        // [
+        //     'text' => 'Cambiar Contraseña',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
+        [
+            'text'    => 'Control de Perfiles',
+            'icon'    => 'fas fa-user-cog',
+            'submenu' => [
+                [
+                    'text'        => 'Enfermeros',
+                    'url'         => 'enfermeros',
+                    'icon'        => 'fas fa-user-nurse',
+                    'rol'         => [1,2,3],
+                ],
+                [
+                    'text'        => 'Pacientes',
+                    'url'         => 'pacientes',
+                    'icon'        => 'fas fa-user-injured',
+                    'rol'         => [1,2,3],
+                ],
+                [
+                    'text'        => 'Medicos',
+                    'url'         => 'medicos',
+                    'icon'        => 'fas fa-user-md',
+                    'rol'         => [1,2,3],
+                ],
+            ],
+        ],
+        [
+            'text'          => 'Cerrar Sesion',
+            'url'           => 'http://127.0.0.1:8000/',
+            'icon'          => 'fa fa-power-off',
+            'rol'           => [1,2,3],       
+        ],
         // ['header' => 'labels'],
         // [
         //     'text'       => 'important',

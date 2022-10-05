@@ -10,7 +10,7 @@
 <form action="/enfermeros" method="POST">
     @csrf
     <div class="mb-3">
-        <label for="" class="form-label">Apellido paterno</label>
+        <label for="" class="form-label">Apellido Paterno</label>
         <input type="text" id="apellidop_enfermera" name="apellidop_enfermera" required class="form-control" tabindex="1">
     </div>
     <div class="mb-3">
