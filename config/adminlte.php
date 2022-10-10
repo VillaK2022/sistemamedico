@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'BIOIMAGEN C.A',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -304,7 +304,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
         ],
         [
             'text' => 'blog',

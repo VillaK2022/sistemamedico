@@ -12,7 +12,7 @@
     @method('PUT')
     
     <div class="mb-3">
-        <label for="" class="form-label">Apellido paterno</label>
+        <label for="" class="form-label">Apellido Paterno</label>
         <input type="text" id="apellidop_enfermera" name="apellidop_enfermera" required class="form-control" value="{{ $enfermero->apellidop_enfermera }}">
     </div>
     <div class="mb-3">

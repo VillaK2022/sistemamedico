@@ -84,7 +84,6 @@ class ConsultaController extends Controller
     {
         //
     }
-
     public function index2()
     {
         return view('inicio.index');
