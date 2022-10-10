@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enfermero;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Auditoria;
 class EnfermeroController extends Controller
 {
     public function __construct(){
@@ -17,7 +20,7 @@ class EnfermeroController extends Controller
      */
     public function index()
     {
-        $enfermeros = Enfermero::all();
+        $enfermeros = Enfermero::whereNull('fechaeliminacion')->get();
         return view('Enfermero.index')->with('enfermeros',$enfermeros);
     }
 
@@ -48,6 +51,13 @@ class EnfermeroController extends Controller
         $enfermeros->tlf_enfermera = $request->get('tlf_enfermera');
 
         $enfermeros->save();
+
+        $auditoria_enfermeros = new Auditoria();
+            $auditoria_enfermeros->accion = 1;
+            $auditoria_enfermeros->id_dato = $enfermeros->id;
+            $auditoria_enfermeros->tabla = 'enfermeros';
+            $auditoria_enfermeros->id_usuario = Auth::id();
+        $auditoria_enfermeros->save();
 
         return  redirect('/enfermeros');
     }
@@ -94,6 +104,13 @@ class EnfermeroController extends Controller
 
         $enfermero->save();
 
+        $auditoria_enfermeros = new Auditoria();
+            $auditoria_enfermeros->accion = 2;
+            $auditoria_enfermeros->id_dato = $enfermero->id;
+            $auditoria_enfermeros->tabla = 'enfermeros';
+            $auditoria_enfermeros->id_usuario = Auth::id();
+        $auditoria_enfermeros->save();
+
         return  redirect('/enfermeros'); 
     }
 
@@ -105,6 +122,23 @@ class EnfermeroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $enfermero = Enfermero::find($id);
+        $enfermero->fechaeliminacion = date("Y-m-d H:i:s");
+        $enfermero->id_usuario_eliminacion = Auth::id();
+        $enfermero->save();
+       
+        $auditoria_enfermeros = new Auditoria();
+            $auditoria_enfermeros->accion = 3;
+            $auditoria_enfermeros->id_dato = $enfermero->id;
+            $auditoria_enfermeros->tabla = 'enfermeros';
+            $auditoria_enfermeros->id_usuario = Auth::id();
+        $auditoria_enfermeros->save();
+        return  redirect('/enfermeros'); 
     }
+    public function imprimir() {
+        $enfermeros = Enfermero::whereNull('fechaeliminacion')->get();
+        $pdf = Pdf::loadView('enfermero.pdf.enfermero', ["datos" => $enfermeros]);
+        return $pdf->download('archivo.pdf');
+    }
+
 }

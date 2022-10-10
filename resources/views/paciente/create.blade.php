@@ -42,7 +42,11 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Cedula</label>
+        @if (isset($paciente))
+        <input type="number" id="cedula_paciente" name="cedula_paciente" required class="form-control" readonly tabindex="1" value="{{ $paciente }}">
+        @else
         <input type="number" id="cedula_paciente" name="cedula_paciente" required class="form-control" tabindex="1">
+        @endif
     </div>
 
     <div class="mb-3">

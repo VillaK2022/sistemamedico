@@ -7,7 +7,9 @@
 @stop
 
 @section('content')
-    <a href="citas/create" class="btn btn-primary mb-3">CREAR CITA</a>
+        @if ($user_rol == 1 or $user_rol == 3)
+            <a href="citas/create" class="btn btn-primary mb-3">CREAR CITA</a>
+        @endif
         <table id="citas" class="table table-hover shadow-lg mt-4" style="width:100%">
             <thead class="bg-primary text-white">
                 <tr>
@@ -16,24 +18,41 @@
                     <th scope="col">Medico</th>
                     <th scope="col">Fecha de la cita</th>
                     <th scope="col">Motivo</th>
+                    <th scope="col">Estado</th>
+                    @if ($user_rol == 1 or $user_rol == 2)
+                        <th scope="col">Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
-                @foreach ( $citas as $cita)
+                @foreach ( $citas as $key => $cita)
                     <tr>
-                        <td>{{ $cita->id }}</td>
-                        <td>{{ $cita->id_paciente }}</td>
-                        <td>{{ $cita->id_medico }}</td>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $cita->nombre_paciente }} {{ $cita->apellidom_paciente }}</td>
+                        <td>{{ $cita->nombre_medico }} {{ $cita->apellidom_medico }}</td>
                         <td>{{ $cita->fecha_cita }}</td>
                         <td>{{ $cita->razon_cita }}</td>
                         <td>
-                            <form action="{{ route ('citas.destroy', $cita->id) }}" method="POST">
-                                <a href="/citas/{{ $cita->id }}/edit" class="btn btn-info">Editar</a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Borrar</button>
-                            </form>
+                            <span class="badge badge-{{ $cita->estado == 0 ? 'warning' : ($cita->estado == 1 ? 'success' : '') }} right">
+                                {{ $cita->estado == 0 ? 'Pendiente' : ($cita->estado == 1 ? 'Finalizada' : '') }}
+                            </span>
                         </td>
+                        @if ($user_rol == 1 or $user_rol == 2)
+                            <td>
+                                @if ($cita->estado == 0)
+                                    <form action="{{ route ('citas.destroy', $cita->id) }}" method="POST">
+                                        <a href="/citas/{{ $cita->id }}/edit" class="btn btn-info">Editar</a>
+                                        <a href="/atencion/{{ $cita->id }}" class="btn btn-dark">Atender</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Borrar</button>
+                                    </form>
+                                @else
+                                <a href="imprimir/cita/{{ $cita->id }}" class="btn btn-danger mb-3">Imprimir</a>
+                                @endif
+                            </td>
+                        
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
@@ -51,9 +70,9 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function () {
-        $('#medicos').DataTable({
-            "lengthMenu":[[5,10,20,-1], [5,10,20,"All"]]
-        });
+            $('#citas').DataTable({
+                "lengthMenu":[[5,10,20,-1], [5,10,20,"All"]]
+            });
         });
     </script>
 @stop

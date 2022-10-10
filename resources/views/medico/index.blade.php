@@ -7,7 +7,10 @@
 @stop
 
 @section('content')
-    <a href="medicos/create" class="btn btn-primary mb-3">CREAR</a>
+    @if ($user_rol == 1)
+        <a href="medicos/create" class="btn btn-primary mb-3">CREAR</a>
+        @endif
+        <a href="imprimir/medico" class="btn btn-danger mb-3">Imprimir</a>
         <table id="medicos" class="table table-hover shadow-lg mt-4" style="width:100%">
             <thead class="bg-primary text-white">
                 <tr>

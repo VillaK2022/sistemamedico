@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Auditoria;
 
 class PacienteController extends Controller
 {
@@ -17,7 +20,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
+       
+        $pacientes = Paciente::whereNull('fechaeliminacion')->get();
         return view('paciente.index')->with('pacientes',$pacientes);
     }
 
@@ -52,6 +56,13 @@ class PacienteController extends Controller
         $pacientes->nhistoria_paciente = $request->get('nhistoria_paciente');
         $pacientes->cedula_paciente = $request->get('cedula_paciente');
         $pacientes->save();
+
+        $auditoria_pacientes = new Auditoria();
+            $auditoria_pacientes->accion = 1;
+            $auditoria_pacientes->id_dato = $pacientes->id;
+            $auditoria_pacientes->tabla = 'pacientes';
+            $auditoria_pacientes->id_usuario = Auth::id();
+        $auditoria_pacientes->save();
 
         return  redirect('/pacientes');
     }
@@ -102,6 +113,13 @@ class PacienteController extends Controller
         $paciente->cedula_paciente = $request->get('cedula_paciente');
         $paciente->save();
 
+        $auditoria_pacientes = new Auditoria();
+            $auditoria_pacientes->accion = 2;
+            $auditoria_pacientes->id_dato = $paciente->id;
+            $auditoria_pacientes->tabla = 'pacientes';
+            $auditoria_pacientes->id_usuario = Auth::id();
+        $auditoria_pacientes->save();
+
         return  redirect('/pacientes');
     }
 
@@ -113,6 +131,39 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $paciente = Paciente::find($id);
+        $paciente->fechaeliminacion = date("Y-m-d H:i:s");
+        $paciente->id_usuario_eliminacion = Auth::id();
+        $paciente->save();
+       
+        $auditoria_pacientes = new Auditoria();
+            $auditoria_pacientes->accion = 3;
+            $auditoria_pacientes->id_dato = $paciente->id;
+            $auditoria_pacientes->tabla = 'paciente';
+            $auditoria_pacientes->id_usuario = Auth::id();
+        $auditoria_pacientes->save();
+        return  redirect('/pacientes'); 
+    }
+
+    public function imprimir() {
+        $pacientes = Paciente::whereNull('fechaeliminacion')->get();
+        $pdf = Pdf::loadView('paciente.pdf.paciente', ["datos" => $pacientes]);
+        return $pdf->download('archivo.pdf');
+    }
+
+    public function index2()
+    {
+        $pacientes = Paciente::whereNull('fechaeliminacion')->get();
+        return view('inicio.index')->with('pacientes', $pacientes);
+    }
+
+    public function buscarCedula (Request $request) {
+        $paciente = Paciente::whereRaw('cedula_paciente LIKE ?', ["%".$request->get('cedula_paciente')."%"])->first();
+        if ($paciente) {
+            return view('paciente.find')->with('paciente', $paciente);
+        }else{
+        return view('paciente.create')->with('paciente', $request->get('cedula_paciente'));
+        }
+
     }
 }
